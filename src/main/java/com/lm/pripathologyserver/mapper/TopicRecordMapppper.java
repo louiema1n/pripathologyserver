@@ -21,14 +21,14 @@ public interface TopicRecordMapppper {
     @Select("select * from topic_record")
     List<TopicRecord> selectAll();
 
-    @Insert("INSERT INTO 'topic_record'" +
-            "('name'," +
-            "'number'," +
-            "'rightAnswer'," +
-            "'time'," +
-            "'target'," +
-            "'selectAnswer')" +
-            "VALUES" +
+    @Insert("INSERT INTO topic_record " +
+            "(name," +
+            "number," +
+            "rightAnswer," +
+            "time," +
+            "target," +
+            "selectAnswer)" +
+            " VALUES " +
             "(#{name}," +
             "#{number}," +
             "#{rightAnswer}," +

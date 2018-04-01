@@ -1,5 +1,6 @@
 package com.lm.pripathologyserver.domain;
 
+
 import java.sql.Timestamp;
 
 /**
