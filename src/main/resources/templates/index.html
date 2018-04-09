@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">PriPathology APK 更新</h1>
+                <p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                        更新apk
+                    </button>
+                <hr/>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">更新Apk</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/upd/add" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="file">上传Apk</label>
+                                        <input type="file" class="form-control-file" id="file" name="file">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="upgradeinfo">更新说明</label>
+                                        <textarea class="form-control" id="upgradeinfo" rows="3" name="upgradeinfo"
+                                                  placeholder="请输入更新说明"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="lastForce" name="lastForce" checked>
+                                            <label class="form-check-label" for="lastForce">
+                                                强制更新
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="display: none" id="submit">Submit</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" onclick="submitUpd()">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:each="upd, iterStat : ${upds}">
+                <h5>
+                    <a th:href="${upd.updateurl}" th:text="${upd.appname}"></a>
+                    <span class="badge badge-pill badge-info" style="margin-left: 5px" th:if="${iterStat.index} eq 0">new</span>
+                </h5>
+                <!-- 更新说明 -->
+                <p class="lead" style="font-size: small" th:text="${upd.upgradeinfo}"></p>
+                </p>
+                <hr/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function submitUpd() {
+        $("#submit").click();
+    }
+</script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script th:src="@{/bootstrap/js/jquery-3.3.1.slim.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+</body>
+</html>

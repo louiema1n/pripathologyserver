@@ -1,3 +1,7 @@
+# apk存放地址
+apk:
+  path: D:/WorkStation/PriPrathology/apk/
+
 server:
   port: 8085
 spring:
@@ -6,3 +10,13 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/prepserver?useSSL=true
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+    mode: HTML
+  servlet:
+    multipart:
+      max-file-size: 10MB
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${apk.path}
