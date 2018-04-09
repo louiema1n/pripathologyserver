@@ -73,6 +73,7 @@ public class UpdateController {
         // 格式化当前apk版本号
         String  serverVersion = filename.substring(0, filename.lastIndexOf("."));
         serverVersion = serverVersion.substring(0, serverVersion.lastIndexOf("."));
+        serverVersion = serverVersion.substring(0, serverVersion.lastIndexOf("."));
         serverVersion = serverVersion.substring(serverVersion.lastIndexOf(".") + 1);
 
         Update update = new Update();
